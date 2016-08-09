@@ -1,0 +1,100 @@
+{
+  "_args": [
+    [
+      "angular-froala@github:neddyy/angular-froala",
+      "/Users/alex/code/easycompanies/app"
+    ]
+  ],
+  "_from": "neddyy/angular-froala",
+  "_id": "angular-froala@2.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-froala",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/neddyy/angular-froala/master/package.json",
+      "gitUrl": "git://github.com/neddyy/angular-froala.git",
+      "httpsUrl": "git+https://github.com/neddyy/angular-froala.git",
+      "shortcut": "github:neddyy/angular-froala",
+      "ssh": "git@github.com:neddyy/angular-froala.git",
+      "sshUrl": "git+ssh://git@github.com/neddyy/angular-froala.git",
+      "type": "github"
+    },
+    "name": "angular-froala",
+    "raw": "angular-froala@github:neddyy/angular-froala",
+    "rawSpec": "github:neddyy/angular-froala",
+    "scope": null,
+    "spec": "github:neddyy/angular-froala",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git://github.com/neddyy/angular-froala.git#b8d55ffa05afc7db57bbcf46a8761c51f485439e",
+  "_shasum": "c0dea2a23c95531b8c814753caf429ddf21ec56f",
+  "_shrinkwrap": null,
+  "_spec": "angular-froala@github:neddyy/angular-froala",
+  "_where": "/Users/alex/code/easycompanies/app",
+  "bugs": {
+    "url": "https://github.com/froala/angular-froala/issues"
+  },
+  "contributors": [
+    {
+      "name": "Cameron Gallarno",
+      "email": "cgallarno@gmail.com"
+    },
+    {
+      "name": "Stefan Neculai",
+      "email": "stefan@froala.com"
+    }
+  ],
+  "dependencies": {},
+  "description": "Angular.js bindings for Froala WYSIWYG HTML rich text editor",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.12.1",
+    "jasmine-core": "^2.4.1",
+    "jshint-stylish": "^2.1.0",
+    "karma": "^0.13.19",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19",
+    "sinon": "^1.17.2"
+  },
+  "gitHead": "b8d55ffa05afc7db57bbcf46a8761c51f485439e",
+  "homepage": "https://www.froala.com/wysiwyg-editor",
+  "keywords": [
+    "angular.js",
+    "editor",
+    "froala",
+    "html",
+    "javascript",
+    "jquery",
+    "jquery-plugin",
+    "rich editor",
+    "rich text editor",
+    "rte",
+    "text",
+    "wysisyg"
+  ],
+  "license": "MIT",
+  "main": "src/angular-froala.js",
+  "name": "angular-froala",
+  "optionalDependencies": {},
+  "readme": "# angular-froala\n>angular-froala provides AngularJS bindings to the froala WYSIWYG editor VERSION 2.\n\n##Version 2\nThis repository contains bindings for the latest version of the Froala Editor (version 2). Checkout the `V1` branch for support of Version 1 of the editor.\n\n\n## Installation\n\n1. Clone this repo or download the zip.\n\n2. Run `bower install` or Download the editor from [https://www.froala.com/wysiwyg-editor/](https://www.froala.com/wysiwyg-editor/) and jQuery\n\n3. Load Froala WYSIWYG editor (and all desired plugins), jQuery and the angular-froala files into your project\n\t- src/angular-froala.js\n\n## Usage\n\n1. Add the `froala` dependency to your Angular project. example:\n\t* `angular.module('myApp', ['froala'])`\n2. Create a textarea with the froala directive in your view and give it a model, where `myHtml` is a variable on `$scope`.\n\t* `<textarea froala ng-model=\"myHtml\"></textarea> `\n\n###Options\n\n**Setting Defaults**: to set defaults for the editor pass a config object to angular.value with the key `froalaConfig` like this:\n```javascript\nangular.module('myApp', ['froala']).\n\tvalue('froalaConfig', {\n\t\ttoolbarInline: false,\n\t\tplaceholderText: 'Enter Text Here'\n\t});\n```\n\n**From the Controller**: to set options from the controller, create an options object on scope and simply pass it to the froala directive. example:\n\n_app.js_\n\n```javascript\nfunction myCtrl($scope){\n\t$scope.myHtml = \"<h1>Hello World</h1>\"\n\t$scope.froalaOptions = {\n\t\ttoolbarButtons : [\"bold\", \"italic\", \"underline\", \"|\", \"align\", \"formatOL\", \"formatUL\"]\n\t}\n}\n```\n_view.html_\n\n```html\n<textarea froala=\"froalaOptions\" ng-model=\"myHtml\"></textarea>\n```\n\nYou can pass any existing Froala option. Consult the [Froala documentation](https://www.froala.com/wysiwyg-editor/docs/options) to view the list of all the available options.\n\n####Directive Specific Option\nThe *angular-froala* directive exposes the following additional option:\n\n * **immediateAngularModelUpdate**: (default: false) This option synchronizes the angular model as soon as a key is released in the editor. Note that it may affect\n  performances.\n  \n###Methods\n\nTo use the methods available, access the editor instance from your froalaOptions object `$scope.options.froalaEditor(method)` and use it as described in the [method docs](http://froala.com/wysiwyg-editor/docs/methods). example:\n\n```javascript\nfunction myCtrl($scope){\n\t$scope.myHtml = \"\";\n\t$scope.froalaOptions = {\n\t\ttoolbarButtons : [\"bold\", \"italic\", \"underline\", \"|\", \"align\", \"formatOL\", \"formatUL\"],\n\t\tevents: {\n\t\t\t'froalaEditor.initialized': function () {\n\t\t\t\t// Use the methods like this.\n\t\t\t\t$scope.froalaOptions.froalaEditor('selection.get');\n\t\t\t}\n\t\t}\n\t}\n```\n###Events\n Events can be passed in with the options, with a key events and object where the key is the event name and the value is the callback function.\n####Attribute\n_app.js_\n```js\n$scope.froalaOptions = {\n\tplaceholder: \"Edit Me\",\n\tevents : {\n\t\t'froalaEditor.focus' : function(e, editor) {/* ... */}\n\t}\n```\n\n###Manual Instantiation\nSometimes you want to control when the Froala Editor will be instantiated. The directive includes a **froala-init** attributes which will provide you with the controls required to initialize and close the editor.\n\n```html\n<div froala froala-init=\"myControllerFunction(initcontrols)\"></div>\n```\n\nWhere *MyControllerFunction* is the name of a function in your controller which will receive an object with different methods to control the editor initialization process. It is primordial that the name of the parameter be *initControls* otherwise your function will not receive the controls.\n\nThe object received by the function will contain the following methods:\n\n- **initialize**: Call this method to initialize the Froala Editor\n- **destroy**: Call this method to destroy the Froala Editor\n- **getEditor**: Call this method to retrieve the editor that was created. This method will return *null* if the editor was not yet created\n\nCheckout the demo file to see a working example.\n\n<!-- ### Displaying Html -->\n\n![screenshot 2016-02-25 16 47 15](https://cloud.githubusercontent.com/assets/597735/13335505/774c0a76-dbdf-11e5-94c5-b0eb9c5b4923.png)\n\nTo display content created with the froala editor use the froala-view directive.\nif `myHtml` is your model, then the following will render your content.\n```html\n<div froala-view=\"myHtml\"></div>\n```\n\nIf you are using the old `ng-bind-html` that will continue to work however it still requires froala-sanitize.js to be used and not all of froala is supported with it. The updated directive does __not__ require froala-sanitize.\n\nCongrats all is done!\n\n## License\n\nThe `angular-froala` project is under MIT license. However, in order to use Froala WYSIWYG HTML Editor plugin you should purchase a license for it.\n\nFroala Editor has [3 different licenses](http://froala.com/wysiwyg-editor/pricing) for commercial use.\nFor details please see [License Agreement](http://froala.com/wysiwyg-editor/terms).\n\n## Development environment setup\n\nIf you want to contribute to Angular-Froala, you will first need to install the required tools to get the project going.\n\n#### Prerequisites\n\n* [Node Package Manager](https://npmjs.org/) (NPM)\n* [Git](http://git-scm.com/)\n\n#### Dependencies\n\n* [Grunt CLI](http://gruntjs.com/getting-started) (task automation)\n* [Bower](http://bower.io/) (package management)\n\n#### Installation\nClone the Git [Angular-Froala](https://github.com/froala/angular-froala) repository on your local machine and run the commands below in the project root directory.\n\n#####1. Install Grunt and Bower\n\n    $ npm install -g grunt-cli bower\n\n#####2. Install project dependencies\n\n    $ npm install\n    $ bower install\n\n#### Running tests\nEach contribution to the project should come with its set of unit tests thus ensuring that the new behaviour will not be altered by subsequent commits.\nSo, before each commit to the repository, run the tests by running the following grunt task:\n\n    $ grunt test\n\nThis will first run a javascript linting tool (JSHint) to make sure that the code is clean and in accordance to the standards.\nIf any errors or warnings are found, they will be displayed on the console. Fix them and rerun the task. When the code is\ndoesn't have any linting warning, the unit tests will be run.\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/froala/angular-froala.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.1.0"
+}
